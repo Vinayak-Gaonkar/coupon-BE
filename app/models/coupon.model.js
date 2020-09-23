@@ -10,16 +10,36 @@ const Schema = mongoose.Schema;
  */
 
 const CouponSchema = new Schema({
-    CouponCode: { type: String },
-    discountAmount: { type: Number },
-    minAmount: { type: Number },
-    type: { type: String,enum:['flat', 'percent'] },
+    CouponCode: {
+        type: String,
+        required:true
+    },
+    discountAmount: {
+        type: Number,
+        required:true
+    },
+    minAmount: {
+        type: Number,
+        required:true
+    },
+    type: {
+        type: String,
+        required:true,
+        enum: ['flat', 'percent']
+    },
     startDate: {
         type: Date,
+        required:true,
         default: new Date()
     },
-    endDate: { 
+    endDate: {
         type: Date,
+        required:true,
+        default: new Date()
+    },
+    maxDiscount: {
+        type: Date,
+        required:true,
         default: new Date()
     }
 },
@@ -81,7 +101,7 @@ exports.findById = (id) => {
         });
 };
 
-exports.createCoupon = async(CouponData) => {
+exports.createCoupon = async (CouponData) => {
     try {
         const newCoupon = new Coupon(CouponData);
         return await newCoupon.save();
@@ -90,12 +110,12 @@ exports.createCoupon = async(CouponData) => {
     }
 };
 
-exports.isValidCoupon=async (code,date)=>{
+exports.isValidCoupon = async (code, date) => {
     return await Coupon.findOne({
-        CouponCode:code,
-        startDate:{$lte:date},
-        endDate:{$gte:date}
-    })
+        CouponCode: code,
+        startDate: { $lte: date },
+        endDate: { $gte: date }
+    }).lean()
 }
 
 exports.list = (perPage, page) => {

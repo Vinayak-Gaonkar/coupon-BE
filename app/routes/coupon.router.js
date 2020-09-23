@@ -20,5 +20,10 @@ exports.routesConfig = function(app) {
   app.get('/coupon/validate/:coupon', [
     CouponController.validate
   ]);
+
+  app.get('/coupon/apply', [
+    CouponController.applyCoupon
+  ]);
+
   return app
 };
