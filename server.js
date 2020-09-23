@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   next();
 });
-const AuthorizationRouter = require('./app/routes/auth.routes');
+// const AuthorizationRouter = require('./app/routes/auth.routes');
 
 const CouponRouter = require('./app/routes/coupon.router');
 // const GenresRouter = require('./app/routes/genres.routes');
@@ -47,7 +47,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 let router = express.Router();
-let passAuth = AuthorizationRouter.routesConfig(router);
+// let passAuth = AuthorizationRouter.routesConfig(router);
 let couponRouter = CouponRouter.routesConfig(router);
 // let genresRoutes = GenresRouter.routesConfig(router);
 // let artistsRoutes = ArtistRouter.routesConfig(router);
@@ -57,7 +57,7 @@ let couponRouter = CouponRouter.routesConfig(router);
 // let commentRoutes = CommentRouter.routesConfig(router);
 
 
-app.use('/api', [passAuth]);
+app.use('/api', [couponRouter]);
 
 // Swagger definition
 

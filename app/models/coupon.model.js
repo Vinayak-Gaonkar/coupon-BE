@@ -11,7 +11,7 @@ const Schema = mongoose.Schema;
 
 const CouponSchema = new Schema({
     CouponCode: { type: String },
-    discountAmount: { type: Date },
+    discountAmount: { type: Number },
     minAmount: { type: Number },
     type: { type: String,enum:['flat', 'percent'] },
     startDate: {
