@@ -33,3 +33,4 @@ Coupon app using, node.js with the Express.JS framework, REST API.
 	node server.js
 	
 	Open public/app.js change the url variable as mentioned in the same file.
+	Open http://localhost:3004/
