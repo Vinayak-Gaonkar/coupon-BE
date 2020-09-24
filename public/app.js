@@ -1,20 +1,8 @@
 
-console.log("hi");
+console.log("working");
 
+let url = "https://fierce-lowlands-61603.herokuapp.com/coupon";
 
-
-
-
-let url = "https://fierce-lowlands-61603.herokuapp.com/";
-let data = {
-    "CouponCode": "AeeUUue",
-    "discountAmount": 100,
-    "type": "flat",
-    "minAmount": 100,
-    "startDate": "2020-09-21",
-    "endDate": "2020-09-25",
-    "maxDiscount": 90
-}
 async function sampleFunction() {
     let option = {
         autohide: true,
