@@ -93,6 +93,9 @@ async function getAllCoupon(params) {
                     tr.append("<td>" + `${endDate.getDate()}/${endDate.getMonth()}/${endDate.getFullYear()}` + "</td>");
                     tr.append("<td>" + data[i]["discountAmount"] + "</td>");
                     tr.append("<td>" + data[i]["type"] + "</td>");
+                    tr.append("<td>" + data[i]["maxDiscount"] + "</td>");
+                    tr.append("<td>" + data[i]["minAmount"] + "</td>");
+
 
 
                     $('#table_1').append(tr);
