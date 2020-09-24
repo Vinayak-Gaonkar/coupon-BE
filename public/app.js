@@ -5,7 +5,7 @@ console.log("hi");
 
 
 
-let url = "http://localhost:3004/api/coupon";
+let url = "https://fierce-lowlands-61603.herokuapp.com/";
 let data = {
     "CouponCode": "AeeUUue",
     "discountAmount": 100,
