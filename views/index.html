@@ -93,11 +93,11 @@
                         <form onsubmit="applyCoupon(event)">
                             <div class="form-group">
                                 <label for="coupon-id">Enter Coupon</label>
-                                <input type="text" name="coupon-id" class="form-control" id="coupon-id">
+                                <input required type="text" name="coupon-id" class="form-control" id="coupon-id">
                             </div>
                             <div class="form-group">
                                 <label for="cart">Enter cart total Price</label>
-                                <input type="text" name="cart" class="form-control" id="cart">
+                                <input required type="text" name="cart" class="form-control" id="cart">
                             </div>
                             <button type="submit" class="btn btn-primary col-12">Submit</button>
                         </form>
@@ -125,6 +125,8 @@
                             <th scope="col">Coupon</th>
                             <th scope="col">Starting</th>
                             <th scope="col">Expire</th>
+                            <th scope="col">Discount</th>
+                            <th scope="col">Type</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -5,7 +5,7 @@ let mongoose = require('mongoose'),
 mongoose.set('debug', true);
 
 // Create the database connection
-mongoose.connect(config.mongodb.uri, config.mongodb.option);
+mongoose.connect(config.mongodb.prodURL, config.mongodb.option);
 mongoose.Promise = global.Promise;
 // CONNECTION EVENTS
 // When successfully connected

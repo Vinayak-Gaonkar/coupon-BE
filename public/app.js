@@ -18,7 +18,7 @@ let data = {
 async function sampleFunction() {
     let option = {
         autohide: true,
-        delay: 1000
+        delay: 3000
     }
     let modalOpt = {
         keyboard: true
@@ -45,6 +45,7 @@ function createCoupon(event) {
         .then(data => {
             if (data.success) {
                 showToast("Coupon created successfully!!")
+                getAllCoupon()
             } else {
                 showToast(data.error)
             }
@@ -86,19 +87,25 @@ async function getAllCoupon(params) {
         .then(data => {
             console.log(data);
 
-            if (data.length>0) {
+            if (data.length > 0) {
+                $("#table_1 > tbody").empty();
                 for (let i = 0; i < data.length; i++) {
+                    let startDate = new Date(data[i]["startDate"])
+                    let endDate = new Date(data[i]["endDate"])
                     tr = $('<tr/>')
-                    tr.append("<td>" + (i+1) + "</td>");
+                    tr.append("<td>" + (i + 1) + "</td>");
                     tr.append("<td>" + data[i]["CouponCode"] + "</td>");
-                    tr.append("<td>" + data[i]["startDate"] + "</td>");
-                    tr.append("<td>" + data[i]["endDate"] + "</td>");
+                    tr.append("<td>" + `${startDate.getDate()}/${startDate.getMonth()}/${startDate.getFullYear()}` + "</td>");
+                    tr.append("<td>" + `${endDate.getDate()}/${endDate.getMonth()}/${endDate.getFullYear()}` + "</td>");
+                    tr.append("<td>" + data[i]["discountAmount"] + "</td>");
+                    tr.append("<td>" + data[i]["type"] + "</td>");
+
 
                     $('#table_1').append(tr);
                 }
             } else {
-                $("#modal-body").html(`${data.error}`);
-                $('.myModal').modal('show')
+                // $("#modal-body").html(`${data.error}`);
+                // $('.myModal').modal('show')
             }
         });
 }

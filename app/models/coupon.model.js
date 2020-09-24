@@ -41,8 +41,7 @@ const CouponSchema = new Schema({
     },
     maxDiscount: {
         type: Number,
-        required:true,
-        default: new Date()
+        required:true
     }
 },
     {

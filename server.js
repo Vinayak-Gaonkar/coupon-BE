@@ -14,6 +14,7 @@ const ejs=require('ejs').renderFile
   app.set('view engine', 'html');
   // app.use(express.logger('dev'));
   // app.use(express.methodOverride());
+  app.set('port', process.env.PORT || config.port);
   app.use(express.static(path.join(__dirname, 'public')));
 // });
 
@@ -47,7 +48,7 @@ app.use('/', function(req, res){
 app.on('listening', function () {
   logger.info('ok, server is running');
 });
-app.listen(config.port, function () {
+app.listen(app.get('port'), function () {
   logger.info('app listening at port %s', config.port);
 });
 

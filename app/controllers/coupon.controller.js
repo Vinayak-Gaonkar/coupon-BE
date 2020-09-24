@@ -22,12 +22,12 @@ exports.createCoupon = async (req, res) => {
         }
         let createResult = await CouponModel.createCoupon(req.body)
         res.status(201).send({
-            success:true,
+            success: true,
             payload: createResult
         });
     } catch (error) {
         res.status(400).send({
-            success:false,
+            success: false,
             error: error.message
         })
     }
@@ -55,22 +55,22 @@ exports.applyCoupon = async (req, res) => {
 
     try {
         let coupon = req.query.coupon || '';
-        let amoount = req.query.amount || 0
+        let amount = req.query.amount || 0
         let date = new Date()
 
 
         let result = await CouponModel.isValidCoupon(coupon, date)
         console.log(result);
         if (result) {
-            if (amoount >= result.minAmount) {
+            if (amount >= result.minAmount) {
 
                 let payload = {};
                 switch (result.type) {
                     case "flat":
-                        payload["amountToDeduct"] = result.discountAmount;
+                        payload["amountToDeduct"] = (amount > result.discountAmount) ? result.discountAmount : amount;
                         break;
                     case "percent":
-                        let totalDiscount = amoount * (result.discountAmount / 100)
+                        let totalDiscount = amount * (result.discountAmount / 100)
                         payload["amountToDeduct"] = (totalDiscount > result.maxDiscount) ? result.maxDiscount : totalDiscount;
                         break
                     default:
@@ -79,19 +79,19 @@ exports.applyCoupon = async (req, res) => {
                 }
                 console.log(result);
                 res.status(200).send({
-                    success:true,
+                    success: true,
                     payload: payload
                 });
             } else {
-                throw Error(`Need ${result.minAmount - amoount} amount more to enable this coupon`)
+                throw Error(`Need ${result.minAmount - amount} amount more to enable this coupon`)
             }
         } else {
-            throw Error("Coupon got Expired")
+            throw Error("Invalid Coupon!!")
         }
 
     } catch (error) {
         res.status(400).send({
-            success:false,
+            success: false,
             error: error.message
         })
     }

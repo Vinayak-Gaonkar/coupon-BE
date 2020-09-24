@@ -3,13 +3,14 @@ User Routes
 */
 
 const CouponController = require('../controllers/coupon.controller');
-// const ValidationMiddleware = require('../middlewares/auth.validation.middleware');
+const ValidationMiddleware = require('../middlewares/coupon.middleware');
 
 const config = require('../../config/default.config');
 
 
 exports.routesConfig = function(app) {
   app.post('/coupon', [
+    ValidationMiddleware.validateCoupon,
     CouponController.createCoupon
   ]);
 

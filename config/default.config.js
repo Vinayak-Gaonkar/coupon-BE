@@ -8,6 +8,7 @@ module.exports = {
   },
   mongodb:{
     uri:"mongodb://localhost:27017/couponDB",
+    prodURL:"mongodb+srv://admin:admin@cluster0.vo4hu.gcp.mongodb.net/couponDB?retryWrites=true&w=majority",
     option:{
       useNewUrlParser: true,
       useUnifiedTopology: true,
