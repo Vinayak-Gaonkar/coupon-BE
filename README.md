@@ -1,7 +1,11 @@
 # Coupon App
 
 Coupon app using, node.js with the Express.JS framework, REST API.
-
+## Dependency
+* mongoose
+* express
+* joi
+* body-parser
 ## Link
 
 * [https://fierce-lowlands-61603.herokuapp.com/](https://fierce-lowlands-61603.herokuapp.com/): find the production link here.  This is hosted in Heroku's free tier, so it may be slow 
@@ -29,4 +33,3 @@ Coupon app using, node.js with the Express.JS framework, REST API.
 	node server.js
 	
 	Open public/app.js change the url variable as mentioned in the same file.
-	open http://localhost:3004
