@@ -1,26 +1,34 @@
-const mongoose = require('mongoose');
-let count = 0;
+let mongoose = require('mongoose'),
 
-const options = {
-  autoIndex: false,
-  // reconnectTries: 30,
-  // reconnectInterval: 500,
-  poolSize: 10,
-  bufferMaxEntries: 0,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-};
+    config = require('../../config/default.config');
 
-const connectWithRetry = () => {
-  console.log('moongoDB connection with retry')
-  mongoose.connect("mongodb://localhost:27017/couponDB", options).then(() => {
-    console.log("MongoDB connected");
-  }).catch(err => {
-    console.log('MongoDB connection unsuccessful, retry after 5 seconds. ', ++count);
-    setTimeout(connectWithRetry, 50000);
-  });
-};
+mongoose.set('debug', true);
 
-connectWithRetry();
+// Create the database connection
+mongoose.connect(config.mongodb.uri, config.mongodb.option);
+mongoose.Promise = global.Promise;
+// CONNECTION EVENTS
+// When successfully connected
+mongoose.connection.on('connected', function () {
+    console.log('Mongoose default connection open ');
+});
 
-exports.mongoose = mongoose
+// If the connection throws an error
+mongoose.connection.on('error', function (err) {
+    console.log('Mongoose default connection error: ' + err);
+});
+
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function () {
+    console.log('Mongoose default connection disconnected');
+});
+
+// If the Node process ends, close the Mongoose connection
+process.on('SIGINT', function () {
+    mongoose.connection.close(function () {
+        console.log('Mongoose default connection disconnected through app termination');
+        process.exit(0);
+    });
+})
+
+module.exports = mongoose;

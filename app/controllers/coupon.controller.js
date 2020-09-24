@@ -14,12 +14,20 @@ exports.list = (req, res) => {
 
 exports.createCoupon = async (req, res) => {
     try {
+        let coupon = req.body.CouponCode || '';
+        let date = new Date()
+        let result = await CouponModel.isValidCoupon(coupon, date)
+        if (result) {
+            throw Error("Coupon already exist")
+        }
         let createResult = await CouponModel.createCoupon(req.body)
         res.status(201).send({
+            success:true,
             payload: createResult
         });
     } catch (error) {
         res.status(400).send({
+            success:false,
             error: error.message
         })
     }
@@ -47,7 +55,7 @@ exports.applyCoupon = async (req, res) => {
 
     try {
         let coupon = req.query.coupon || '';
-        let amoount = req.query.amoount || 0
+        let amoount = req.query.amount || 0
         let date = new Date()
 
 
@@ -66,7 +74,7 @@ exports.applyCoupon = async (req, res) => {
                         payload["amountToDeduct"] = (totalDiscount > result.maxDiscount) ? result.maxDiscount : totalDiscount;
                         break
                     default:
-                        console.log(result.type);
+                        throw Error("somthing went wrong")
                         break;
                 }
                 console.log(result);

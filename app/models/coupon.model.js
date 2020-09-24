@@ -2,7 +2,9 @@
  * Module dependencies
  */
 
-const mongoose = require('../services/mongoose.service').mongoose;
+// const mongoose = require('../services/mongoose.service').mongoose;
+let mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 /**
@@ -38,7 +40,7 @@ const CouponSchema = new Schema({
         default: new Date()
     },
     maxDiscount: {
-        type: Date,
+        type: Number,
         required:true,
         default: new Date()
     }
@@ -83,23 +85,10 @@ CouponSchema.findById = function (cb) {
 const Coupon = mongoose.model('Coupon', CouponSchema);
 
 
-exports.findByEmail = (email) => {
-    return Coupon.findOne({ email: email })
-}
 
 exports.findByCouponId = (id) => {
     return Coupon.findOne({ CouponId: id })
 }
-
-exports.findById = (id) => {
-    return Coupon.findById(id)
-        .then((result) => {
-            result = result.toJSON();
-            delete result._id;
-            delete result._v
-            return result;
-        });
-};
 
 exports.createCoupon = async (CouponData) => {
     try {
@@ -148,14 +137,4 @@ exports.patchCoupon = (id, CouponData) => {
     });
 };
 
-exports.removeByID = (CouponId) => {
-    return new Promise((resolve, reject) => {
-        Coupon.remove({ _id: CouponId }, (err) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(err);
-            }
-        });
-    });
-};
+

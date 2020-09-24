@@ -3,7 +3,7 @@ User Routes
 */
 
 const CouponController = require('../controllers/coupon.controller');
-const ValidationMiddleware = require('../middlewares/auth.validation.middleware');
+// const ValidationMiddleware = require('../middlewares/auth.validation.middleware');
 
 const config = require('../../config/default.config');
 
