@@ -14,6 +14,7 @@ Coupon app using, node.js with the Express.JS framework, REST API.
    * Max. Discount amount is considered only coupon type is percent
 * Frontend and backend are served in single project
 * Basic folder structure followed
+* Used Html,Bootstrap,javascript for frontend.
 * User can see existing token
 
 ## Note 
@@ -28,3 +29,4 @@ Coupon app using, node.js with the Express.JS framework, REST API.
 	node server.js
 	
 	Open public/app.js change the url variable as mentioned in the same file.
+	open http://localhost:3004
