@@ -1,7 +1,7 @@
 
 console.log("working");
 
-let url = "https://fierce-lowlands-61603.herokuapp.com/coupon";
+let url = "https://fierce-lowlands-61603.herokuapp.com/api/coupon";
 
 async function sampleFunction() {
     let option = {
