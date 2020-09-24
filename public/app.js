@@ -8,7 +8,7 @@ let url = "https://fierce-lowlands-61603.herokuapp.com/api/coupon";
 //NOTE: while running in local,rename "localurl" variable to "url"
 let localurl = "http://localhost:3004/api/coupon";
 
-async function sampleFunction() {
+function sampleFunction() {
     let option = {
         autohide: true,
         delay: 3000
@@ -22,6 +22,7 @@ async function sampleFunction() {
 }
 
 function createCoupon(event) {
+    let data={}
     const form = new FormData(event.target);
     data["CouponCode"] = form.get("coupon");
     data["type"] = form.get("type");
