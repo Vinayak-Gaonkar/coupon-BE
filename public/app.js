@@ -3,10 +3,10 @@ console.log("working");
 
 
 
-let url = "https://fierce-lowlands-61603.herokuapp.com/api/coupon";
+// let url = "https://fierce-lowlands-61603.herokuapp.com/api/coupon";
 
 //NOTE: while running in local,rename "localurl" variable to "url"
-let localurl = "http://localhost:3004/api/coupon";
+let url = "http://localhost:3004/api/coupon";
 
 function sampleFunction() {
     let option = {

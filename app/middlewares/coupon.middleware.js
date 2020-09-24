@@ -5,12 +5,12 @@ exports.validateCoupon = async (req, res, next) => {
     logger.info("web | middleware | validateCoupon | validating request params");
     let schema = validator.object().keys({
         CouponCode: validator.string().required(),
-        discountAmount: validator.number().required(),
+        discountAmount: validator.number().min(0).required(),
         type: validator.required(),
         startDate: validator.date().required(),
         endDate: validator.date().greater(validator.ref('startDate')),
-        minAmount: validator.number().required(),
-        maxDiscount: validator.number()
+        minAmount: validator.number().min(0).required(),
+        maxDiscount: validator.number().min(0)
     });
 
 

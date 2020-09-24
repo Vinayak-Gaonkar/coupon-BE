@@ -55,7 +55,7 @@ exports.applyCoupon = async (req, res) => {
 
     try {
         let coupon = req.query.coupon || '';
-        let amount = req.query.amount || 0
+        let amount = (Number(req.query.amount)>0)? Number(req.query.amount) : 0
         let date = new Date()
 
 
