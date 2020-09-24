@@ -4,10 +4,7 @@
   "description": "It's backend api server app for trephoria",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "pretest": "eslint",
-    "prod": "pm2-runtime start ecosystem.config.js --env production"
+    "start": "node server.js"
   },
   "license": "ISC",
   "dependencies": {
