@@ -30,15 +30,3 @@ exports.validateCoupon = async (req, res, next) => {
     }
 }
 
-// , function (err) {
-//     if (err) {
-//         logger.warn("web | middleware | validateCoupon | validating request params | Error: ", err);
-//         res.status(400).json({
-//             success: false,
-//             error: {
-//                 message: err.message
-//             }
-//         })
-//     } else
-//         next();
-// });

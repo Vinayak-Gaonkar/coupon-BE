@@ -1,5 +1,5 @@
 /*
-User Routes
+Coupon Routes
 */
 
 const CouponController = require('../controllers/coupon.controller');
