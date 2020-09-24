@@ -1,7 +1,7 @@
 {
   "name": "backend-server",
   "version": "1.0.0",
-  "description": "It's backend api server app for trephoria",
+  "description": "It's backend api server app for Coupon",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
