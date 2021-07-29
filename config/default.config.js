@@ -1,5 +1,5 @@
 module.exports = {
-  port: 3004,
+  port: 8080,
   environment: "dev",
   permissionLevels: {
     NORAML_USER: 1,
